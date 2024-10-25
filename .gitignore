@@ -1,3 +1,11 @@
 # idea files
 
 .idea/
+
+# vscode
+
+.vscode/
+
+# Python
+
+__pycache__/
