@@ -1,32 +1,15 @@
 import pathlib
 
-from video.video import VideoExporter, H264BPVideoExporter, H264Hi422PVideoExporter, LosslessVideoExporter
-from audio.audio import AudioExporter, AACAudioExporter, WAVAudioExporter
+from creational.factory.after.factory_exporter.exporter_factory import ExporterFactory
+from creational.factory.after.ui import read_exporter
 
-def main() -> None:
+
+def main(factory_exporter: ExporterFactory) -> None:
     """Main function."""
 
-    # read the desired export quality
-    export_quality: str
-    while True:
-        export_quality = input("Enter desired output quality (low, high, master): ")
-        if export_quality in {"low", "high", "master"}:
-            break
-        print(f"Unknown output quality option: {export_quality}.")
-
-    # create the video and audio exporters
-    video_exporter: VideoExporter
-    audio_exporter: AudioExporter
-    if export_quality == "low":
-        video_exporter = H264BPVideoExporter()
-        audio_exporter = AACAudioExporter()
-    elif export_quality == "high":
-        video_exporter = H264Hi422PVideoExporter()
-        audio_exporter = AACAudioExporter()
-    else:
-        # default: master quality
-        video_exporter = LosslessVideoExporter()
-        audio_exporter = WAVAudioExporter()
+    # retreive the video and audio exporters
+    video_exporter = factory_exporter.create_video_exporter()
+    audio_exporter = factory_exporter.create_audio_exporter()
 
     # prepare the export
     video_exporter.prepare_export("placeholder_for_video_data")
@@ -39,4 +22,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    fac = read_exporter()
+
+    main(fac)

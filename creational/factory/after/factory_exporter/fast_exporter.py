@@ -5,7 +5,7 @@ from creational.factory.after.video.h264bp_video_exporter import H264BPVideoExpo
 from creational.factory.after.video.video_exporter import VideoExporter
 
 
-class FastExporter(ExporterFactory):
+class FastExporterFactory(ExporterFactory):
     """
         Concrete implementation of an ExporterFactory.
         The FastExporter, focusing on fast exportation process and not quality.

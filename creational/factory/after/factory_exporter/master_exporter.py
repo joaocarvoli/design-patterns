@@ -5,7 +5,7 @@ from creational.factory.after.video.lossless_video_exporter import LosslessVideo
 from creational.factory.after.video.video_exporter import VideoExporter
 
 
-class MasterExporter(ExporterFactory):
+class MasterExporterFactory(ExporterFactory):
     """
         Concrete implementation of an ExporterFactory.
         The MasterExporter, provides the slowest exportation process but the highest quality.

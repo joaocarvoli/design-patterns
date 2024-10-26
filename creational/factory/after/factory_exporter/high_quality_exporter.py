@@ -5,7 +5,7 @@ from creational.factory.after.video.h264hi422p_video_exporter import H264Hi422PV
 from creational.factory.after.video.video_exporter import VideoExporter
 
 
-class HighQualityExporter(ExporterFactory):
+class HighQualityExporterFactory(ExporterFactory):
     """
         Concrete implementation of an ExporterFactory.
         The HighQualityExporter, provides a slower exportation process but a higher quality.
