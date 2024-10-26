@@ -1,11 +1,17 @@
+from solid.after.auth.auth_method import AuthMethod
+from solid.after.auth.sms_auth import SMSAuth
 from solid.after.order import Order, StatusType
 from solid.after.payment.payment import Payment
 
 class DebitPayment(Payment):
-    def __init__(self, security_code: str):
+    def __init__(self, security_code: str, authorizer: SMSAuth):
         self.__security_code = security_code
+        self.__authorizer = authorizer
 
     def pay(self, order: Order):
-        print("Processing debit payment type")
-        print(f"Verifying security code: {self.__security_code}")
-        order.change_order_status(StatusType.PAID)
+        if not self.__authorizer.is_authorized():
+            print('You was not authorized')
+            #  raise Exception('Not authorized')
+        else:
+            print("Processing debit payment type")
+            order.change_order_status(StatusType.PAID)
