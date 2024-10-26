@@ -12,6 +12,8 @@ The OCP states that a class, interface, or method should be open for extension b
 
 The LSP states that subclasses should extend or add to the behavior of their parent class without altering its expected functionality. In other words, derived classes should be substitutable for their base classes without affecting the correctness of the program. For example, if you have an abstract class `Payment` with a constructor that takes order and security code as parameters, any subclass, like `DebitPayment` or `CreditPayment`, should adhere to this structure and display relevant security information. A `PaypalPayment` subclass, for instance, should not misuse the security code parameter to display unrelated data, like an email address, simply because it doesn't use a security code. If a subclass doesn’t align with the parent’s requirements, it might indicate that the subclass should not inherit from that particular class.
 
-## I - Interface Segregation
+## I - Interface Segregation Principle (ISP)
+
+The ISP states that a class should only implement behaviors that are relevant to its specific responsibilities. In other words, interfaces should be designed so that classes are not forced to implement methods they don’t need. For example, if `DebitPayment` requires two-factor authentication while `PaypalPayment` relies on SMS authentication, it would be better to create separate interfaces for each authentication type rather than including both in a common `Payment` interface. Classes that need these features should implement only the interfaces they require, which could be achieved through multiple inheritance or mix-ins, depending on the language. Without ISP, a class might end up inheriting irrelevant methods, which can lead to incorrect implementations or errors.
 
 ## D - Dependency Inversion
