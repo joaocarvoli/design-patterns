@@ -16,4 +16,6 @@ The LSP states that subclasses should extend or add to the behavior of their par
 
 The ISP states that a class should only implement behaviors that are relevant to its specific responsibilities. In other words, interfaces should be designed so that classes are not forced to implement methods they don’t need. For example, if `DebitPayment` requires email authentication while `PaypalPayment` relies on SMS authentication, it would be better to create separate interfaces for each authentication type rather than including both in a common `Payment` interface. Classes that need these features should implement only the interfaces they require, which could be achieved through multiple inheritance or mix-ins, depending on the language. Without ISP, a class might end up inheriting irrelevant methods, which can lead to incorrect implementations or errors.
 
-## D - Dependency Inversion
+## D - Dependency Inversion Principle (DIP)
+
+The DIP states that classes should depend on abstractions, not on specific implementations. For example, if `DebitPayment` and `CreditPayment` both use authorizer classes to validate their payment methods, these payment methods (e.g., email, SMS, or CAPTCHA verification) should not rely on concrete implementations of the authorizers. Instead, they should depend on a generic authorization interface or abstraction. This approach allows the two payment types to remain flexible and independent from specific authorization implementations, making it easier to swap or extend authorizers without modifying the payment classes themselves.

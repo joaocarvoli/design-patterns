@@ -1,4 +1,5 @@
-from abc import ABC
+from abc import ABC, abstractmethod
+
 
 class AuthMethod(ABC):
     __authorized = False
@@ -8,3 +9,8 @@ class AuthMethod(ABC):
 
     def set_authorization(self, authorized: bool):
         self.__authorized = authorized
+
+    @abstractmethod
+    def authorize(self):
+        """Implement specific authorization logic in subclasses"""
+        pass
