@@ -1,8 +1,8 @@
 from api.user import register_new_user, password_forgotten
 from api.plan import upgrade_plan
-from behavioral.observer.after.event.listener.email_listener import setup_email_event_handler
-from behavioral.observer.after.event.listener.log_listener import setup_log_event_handler
-from behavioral.observer.after.event.listener.slack_listener import setup_slack_event_handler
+from event.listener.email_listener import setup_email_event_handler
+from event.listener.log_listener import setup_log_event_handler
+from event.listener.slack_listener import setup_slack_event_handler
 
 def main():
     # Setting up the event handlers observers

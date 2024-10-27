@@ -1,5 +1,6 @@
-from behavioral.observer.after.event.core import post_event
-from behavioral.observer.after.lib.db import find_user
+from observer.after.lib.db import find_user
+from observer.after.event.core import post_event
+
 
 
 def upgrade_plan(email: str):

@@ -1,6 +1,6 @@
-from behavioral.observer.after.event.core import post_event
-from behavioral.observer.after.lib.db import create_user, find_user
-from behavioral.observer.after.lib.stringtools import get_random_string
+from observer.after.lib.db import create_user, find_user
+from observer.after.lib.stringtools import get_random_string
+from observer.after.event.core import post_event
 
 
 def register_new_user(name: str, password: str, email: str):
